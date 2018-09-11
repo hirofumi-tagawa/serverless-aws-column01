@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>ITA</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/siimple@3.1.0/dist/siimple.min.css">
+</head>
+<body>
+  <div id="app">
+    <div>
+      <div class="siimple-navbar siimple-navbar--extra-large siimple-navbar--primary">
+          <div class="siimple-navbar-title">Image Classification Example</div>
+          <div class="siimple-navbar-subtitle">ITA</div>
+      </div>
+      
+      <div class="siimple-content siimple-content--extra-large">
+          <div class="siimple-grid">
+              <div class="siimple-grid-row">
+                  <div class="siimple-grid-col siimple-grid-col--6 siimple-grid-col--sm-6">
+                      <div class="siimple-h2">Select Image file</div>
+                    	<input type="file" id="file" v-on:change="onFileChange">
+
+                      <div class="siimple-content siimple-content--Medium">
+                          <div v-if="image">
+                              <img :src="image" /><br>
+                              <div class="siimple-btn siimple-btn--primary siimple-btn" v-on:click="uploadImage()">Upload</div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="siimple-grid-col siimple-grid-col--6 siimple-grid-col--sm-6">
+                      <div class="siimple-h2">Result - SageMaker</div>
+                        <div class="siimple-list">
+                            <div class="siimple-list-item" v-for="result in results_classification">{{ result }}</div>
+                        </div>
+                      <div class="siimple-h2">Result - Rekognition</div>
+                        <div class="siimple-list">
+                            <div class="siimple-list-item" v-for="result in results_rekognition">{{ result }}</div>
+                        </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/vue@2.5.17/dist/vue.min.js"></script>
+  <script src="https://unpkg.com/axios@0.18.0/dist/axios.min.js"></script>
+  <script src="./main.js"></script>
+</body>
+</html>
