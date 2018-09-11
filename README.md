@@ -1,0 +1,1 @@
+# serverless-aws-column01
